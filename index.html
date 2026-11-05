@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReStart — od praznog lokala do novog posla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">Re<span>Start</span></div>
+      <div class="tagline">Vi imate poslovnu ideju. Grad ima neiskorišten prostor.</div>
+    </div>
+    <nav class="steps" id="steps">
+      <button class="step active" data-step="1"><b>1</b> Ideja</button>
+      <button class="step" data-step="2"><b>2</b> Usporedba</button>
+      <button class="step" data-step="3"><b>3</b> Računica</button>
+    </nav>
+    <div class="data-badge" title="Evidentiran kao prazan ≠ dostupan za zakup danas">
+      <span class="dot"></span> Registar praznih prostora · Grad Zagreb · <b>2024.</b>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel" id="panel">
+      <!-- STEP 1 -->
+      <section class="view active" id="view-1">
+        <h1>Što želite pokrenuti?</h1>
+        <div class="chips" id="biz-chips"></div>
+
+        <div class="field">
+          <div class="field-head"><label>Potrebna površina</label><span class="val" id="area-val"></span></div>
+          <div class="range2">
+            <input type="range" id="area-min" min="5" max="300" step="5" />
+            <input type="range" id="area-max" min="5" max="300" step="5" />
+            <div class="range2-track"><div id="area-fill"></div></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-head"><label>Što vam je najvažnije?</label></div>
+          <div class="prio" id="prio"></div>
+        </div>
+
+        <div class="field toggles">
+          <label class="toggle"><input type="checkbox" id="only-street" /> <span></span> Samo ulični lokali</label>
+          <label class="toggle"><input type="checkbox" id="hide-tender" /> <span></span> Sakrij prostore s natječajem u tijeku</label>
+        </div>
+
+        <div class="result-head">
+          <h2><span id="match-count">0</span> prostora odgovara</h2>
+          <span class="muted">od <span id="total-count">0</span> u registru</span>
+          <button class="auto-btn" data-auto>✨ Predloži 3</button>
+        </div>
+        <ol class="list" id="list"></ol>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="view" id="view-2">
+        <h1>Usporedba kandidata</h1>
+        <p class="lead">Bez proizvoljnog „AI rezultata". Svaka ocjena ima razlog koji možete provjeriti.</p>
+        <div id="compare"></div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="view" id="view-3">
+        <h1>Koliko posla treba?</h1>
+        <p class="lead">Nije prognoza koliko ćete kupaca imati — nego <b>koliko vam ih treba</b> da pokrijete troškove.</p>
+        <div id="calc"></div>
+      </section>
+    </aside>
+
+    <section class="mapwrap">
+      <div id="map"></div>
+      <div class="legend">
+        <div><i class="lg good"></i> odgovara</div>
+        <div><i class="lg pick"></i> u usporedbi</div>
+        <div><i class="lg off"></i> ne odgovara uvjetima</div>
+        <div><i class="lg stop"></i> ZET stajalište (zum)</div>
+      </div>
+      <div class="tray" id="tray"></div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

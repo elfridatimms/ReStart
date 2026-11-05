@@ -1,0 +1,7 @@
+{
+  "name": "restart-demo-video",
+  "private": true,
+  "description": "Snima demo video ReStart aplikacije (Playwright + ffmpeg)",
+  "scripts": { "record": "node demo.js ../../ReStart-demo.mp4" },
+  "dependencies": { "ffmpeg-static": "^5.2.0", "playwright": "^1.64.1" }
+}
